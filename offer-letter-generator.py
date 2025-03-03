@@ -19,16 +19,10 @@ def generate_offer_letter(position, name, email, phone, location, salary_monthly
     # Replace curly quotes
     letter_body = f"""Dear {name},
 
-Thank you for meeting us to pursue an employment opportunity with Optiblack 
-Based on the information /documents provided by you and the interview you had in 
-connection with your employment in our Company, we are pleased to appoint you as an “{position}” based at {location}. 
-The remuneration will be as discussed and mutually agreed between us. 
-The Management reserves the right to bifurcate or merge the allowances in the basic salary. 
-This letter does not constitute an employment offer. This letter is being issued to intimate 
-you about certain terms and conditions that are essential which the company believes you must 
-be aware of while considering employment opportunities with Optiblack. 
-While this appointment is being made the Management reserves the right to utilise your services 
-in any function, located elsewhere in India or abroad, either in existence or which may come into existence in future. 
+Thank you for meeting us to pursue an employment opportunity with Optiblack Based on the information /documents provided by you and the interview you had in connection with your employment in our Company, we are pleased to appoint you as an “{position}” based at {location}. 
+The remuneration will be as discussed and mutually agreed between us.  The Management reserves the right to bifurcate or merge the allowances in the basic salary. 
+This letter does not constitute an employment offer. This letter is being issued to intimate you about certain terms and conditions that are essential which the company believes you must be aware of while considering employment opportunities with Optiblack. 
+While this appointment is being made the Management reserves the right to utilise your services in any function, located elsewhere in India or abroad, either in existence or which may come into existence in future. 
  
 Your initial place of posting will be at {location}, and your offered CTC will be 
 INR {salary_monthly} Per Month (INR {salary_annual} Per Annum).
@@ -60,7 +54,7 @@ Proof of your Residence/Address Proof (Ration Card, Rent Agreement, Driving Lice
     pdf.cell(0, 8, "Sincerely,", new_x=XPos.LMARGIN, new_y=YPos.NEXT)
     pdf.cell(0, 8, "Acknowledged and Agreed By:", new_x=XPos.LMARGIN, new_y=YPos.NEXT)
     pdf.cell(0, 8, "Vishal Rewari")
-    pdf.cell(0, 8, "Partner", new_x=XPos.LMARGIN, new_y=YPos.NEXT)
+    pdf.cell(0, 8, "Partner")
     pdf.cell(0, 8, "Optiblack (297 Designs Firm)", new_x=XPos.LMARGIN, new_y=YPos.NEXT)
 
     pdf_filename = f"Offer_Letter_{name.replace(' ', '_')}.pdf"
