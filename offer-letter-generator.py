@@ -61,7 +61,7 @@ Proof of your Residence/Address Proof (Ration Card, Rent Agreement, Driving Lice
     pdf.cell(0, 8, "Acknowledged and Agreed By:", new_x=XPos.LMARGIN, new_y=YPos.NEXT)
     pdf.cell(0, 8, "Vishal Rewari")
     pdf.cell(0, 8, "Partner", new_x=XPos.LMARGIN, new_y=YPos.NEXT)
-     pdf.cell(0, 8, "Optiblack (297 Designs Firm)", new_x=XPos.LMARGIN, new_y=YPos.NEXT)
+    pdf.cell(0, 8, "Optiblack (297 Designs Firm)", new_x=XPos.LMARGIN, new_y=YPos.NEXT)
 
     pdf_filename = f"Offer_Letter_{name.replace(' ', '_')}.pdf"
     pdf.output(pdf_filename)
