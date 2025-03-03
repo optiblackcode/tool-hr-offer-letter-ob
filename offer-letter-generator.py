@@ -41,6 +41,7 @@ by returning a signed copy of this letter.
     pdf.multi_cell(0, 8, letter_body)
 
     pdf.cell(0, 8, "Sincerely,", new_x=XPos.LMARGIN, new_y=YPos.NEXT)
+    pdf.cell(0, 8, "Acknowledged and Agreed By:", new_x=XPos.LMARGIN, new_y=YPos.NEXT)
     pdf.cell(0, 8, "Vishal Rewari")
     pdf.cell(0, 8, "Partner, Optiblack (297 Designs Firm)", new_x=XPos.LMARGIN, new_y=YPos.NEXT)
 
@@ -52,11 +53,11 @@ by returning a signed copy of this letter.
 st.title("Optiblack Offer Letter Generator")
 
 # User inputs
-position = st.selectbox("Select Position", ["Full-Time", "Internship"])
+position = st.text_input("Position")
 name = st.text_input("Candidate Name")
 email = st.text_input("Candidate Email")
 phone = st.text_input("Phone Number")
-location = st.text_input("Job Location", "Mumbai, India")
+location = st.text_input("Job Location","India")
 salary_monthly = st.text_input("Salary Per Month (INR)")
 salary_annual = st.text_input("Salary Per Year (INR)")
 joining_date = st.date_input("Joining Date")
