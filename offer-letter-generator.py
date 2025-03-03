@@ -13,26 +13,43 @@ def generate_offer_letter(position, name, email, phone, location, salary_monthly
     pdf.add_font("DejaVu", "", "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", uni=True)
     pdf.set_font("DejaVu", "", 12)
 
-    pdf.cell(200, 10, f"Offer Letter: {position} with Optiblack", new_x=XPos.LMARGIN, new_y=YPos.NEXT, align="C")
+    pdf.cell(200, 18, f"Offer Letter: {position} with Optiblack", new_x=XPos.LMARGIN, new_y=YPos.NEXT, align="C")
     pdf.ln(10)
 
     # Replace curly quotes
     letter_body = f"""Dear {name},
 
-Thank you for meeting us to pursue an employment opportunity with Optiblack.
-Based on the information/documents provided by you and the interview you had, 
-we are pleased to appoint you as an "{position}" based at {location}. 
-The remuneration will be as discussed and mutually agreed upon. 
-
+Thank you for meeting us to pursue an employment opportunity with Optiblack 
+Based on the information /documents provided by you and the interview you had in 
+connection with your employment in our Company, we are pleased to appoint you as an “{Position}” based at {location}. 
+The remuneration will be as discussed and mutually agreed between us. 
+The Management reserves the right to bifurcate or merge the allowances in the basic salary. 
+This letter does not constitute an employment offer. This letter is being issued to intimate 
+you about certain terms and conditions that are essential which the company believes you must 
+be aware of while considering employment opportunities with Optiblack. 
+While this appointment is being made the Management reserves the right to utilise your services 
+in any function, located elsewhere in India or abroad, either in existence or which may come into existence in future. 
+ 
 Your initial place of posting will be at {location}, and your offered CTC will be 
-INR {salary_monthly} Per Month ({salary_annual} INR Per Annum).
+INR {salary_monthly} Per Month (INR {salary_annual} Per Annum).
+
+Exclusivity and Non-Compete Clause
+The Employee/Contractor agrees that during the term of their employment/engagement with the Company, they shall not, directly or indirectly, engage in any other employment, contract work, consulting, or business activities that may conflict with their duties, responsibilities, or obligations to the Company. The Employee/Contractor shall devote their full working hours and best efforts exclusively to the Company’s business and shall not undertake any other work, whether paid or unpaid, without prior written consent from the Company.
+Failure to comply with this clause may result in termination of the contract and potential legal action for breach of agreement.
+
 
 By signing this letter, you agree that:
 (a) The information provided in your CV/job application and during interviews is correct.
 (b) This Letter of Intent is valid only till your joining date, which should not be later than {joining_date}.
 
-A formal appointment letter will be issued upon joining. Kindly confirm acceptance 
-by returning a signed copy of this letter.
+A formal appointment letter will be issued to you. In the meantime, we request your confirmation of acceptance of this offer by returning us a signed copy of this letter. 
+Please bring the following documents at the time of your joining: - Original (for verification only) and photocopies of all your documents. 
+
+Experience / Relieving Letters & last drawn salary slips from previous Organizations (not applicable for fresher). 
+Four passport size Color photographs. 
+Photo Identity Card (PAN CARD) and Aadhaar Card. 
+Proof of your Residence/Address Proof (Ration Card, Rent Agreement, Driving License, Passport, Affidavit, Aadhar Card). 
+
 """
 
     # Normalize text to avoid Unicode errors
