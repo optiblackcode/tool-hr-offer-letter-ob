@@ -2,51 +2,48 @@ import streamlit as st
 from fpdf import FPDF
 import datetime
 import os
+from fpdf.enums import XPos, YPos
 
-# Function to generate offer letter PDF
 def generate_offer_letter(position, name, email, phone, location, salary_monthly, salary_annual, joining_date):
     pdf = FPDF()
     pdf.set_auto_page_break(auto=True, margin=15)
     pdf.add_page()
-    
-    pdf.set_font("Arial", "B", 14)
-    pdf.cell(200, 10, f"Offer Letter: {position} with Optiblack", ln=True, align="C")
-    pdf.ln(10)
-    
-    pdf.set_font("Arial", "", 12)
-    pdf.multi_cell(0, 8, f"Dear {name},\n\n"
-                         "Thank you for meeting us to pursue an employment opportunity with Optiblack. "
-                         "Based on the information/documents provided by you and the interview you had, "
-                         "we are pleased to appoint you as an “{position}” based at {location}. "
-                         "The remuneration will be as discussed and mutually agreed upon. "
-                         "The Management reserves the right to bifurcate or merge the allowances in the basic salary.\n\n"
-                         "This letter does not constitute an employment offer but serves to inform you about essential terms "
-                         "and conditions you must be aware of while considering employment with Optiblack. Your services may be utilized "
-                         "in any function, within India or abroad.\n\n"
-                         f"Your initial place of posting will be at {location}, and your offered CTC will be INR {salary_monthly} Per Month "
-                         f"({salary_annual} INR Per Annum).\n\n")
-    
-    pdf.multi_cell(0, 8, "By signing this letter, you agree that:\n"
-                         "(a) The information provided in your CV/job application and during interviews is correct.\n"
-                         f"(b) This Letter of Intent is valid only till your joining date, which should not be later than {joining_date}.\n\n")
-    
-    pdf.multi_cell(0, 8, "A formal appointment letter will be issued upon joining. Kindly confirm acceptance by returning a signed copy of this letter.\n"
-                         "Please bring the following documents on the joining date:\n"
-                         "- Experience/Relieving Letters & last drawn salary slips (if applicable)\n"
-                         "- Four passport-size color photographs\n"
-                         "- Photo Identity Card (PAN CARD, Aadhaar Card)\n"
-                         "- Proof of Residence (Ration Card, Rent Agreement, Passport, etc.)\n\n")
-    
-    pdf.cell(0, 8, "Sincerely,", ln=True)
-    pdf.cell(0, 8, "Vishal Rewari", ln=True)
-    pdf.cell(0, 8, "Partner, Optiblack (297 Designs Firm)", ln=True)
-    pdf.ln(10)
-    
-    pdf.cell(0, 8, "Acknowledged and Agreed By:", ln=True)
-    pdf.cell(0, 8, name, ln=True)
-    pdf.cell(0, 8, f"Date: {datetime.date.today().strftime('%d %B %Y')}", ln=True)
 
-    # Save the PDF
+    # Use Unicode font
+    pdf.add_font("DejaVu", "", "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", uni=True)
+    pdf.set_font("DejaVu", "", 12)
+
+    pdf.cell(200, 10, f"Offer Letter: {position} with Optiblack", new_x=XPos.LMARGIN, new_y=YPos.NEXT, align="C")
+    pdf.ln(10)
+
+    # Replace curly quotes
+    letter_body = f"""Dear {name},
+
+Thank you for meeting us to pursue an employment opportunity with Optiblack.
+Based on the information/documents provided by you and the interview you had, 
+we are pleased to appoint you as an "{position}" based at {location}. 
+The remuneration will be as discussed and mutually agreed upon. 
+
+Your initial place of posting will be at {location}, and your offered CTC will be 
+INR {salary_monthly} Per Month ({salary_annual} INR Per Annum).
+
+By signing this letter, you agree that:
+(a) The information provided in your CV/job application and during interviews is correct.
+(b) This Letter of Intent is valid only till your joining date, which should not be later than {joining_date}.
+
+A formal appointment letter will be issued upon joining. Kindly confirm acceptance 
+by returning a signed copy of this letter.
+"""
+
+    # Normalize text to avoid Unicode errors
+    letter_body = letter_body.replace("“", '"').replace("”", '"')
+
+    pdf.multi_cell(0, 8, letter_body)
+
+    pdf.cell(0, 8, "Sincerely,", new_x=XPos.LMARGIN, new_y=YPos.NEXT)
+    pdf.cell(0, 8, "Vishal Rewari")
+    pdf.cell(0, 8, "Partner, Optiblack (297 Designs Firm)", new_x=XPos.LMARGIN, new_y=YPos.NEXT)
+
     pdf_filename = f"Offer_Letter_{name.replace(' ', '_')}.pdf"
     pdf.output(pdf_filename)
     return pdf_filename
