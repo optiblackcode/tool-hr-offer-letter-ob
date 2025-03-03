@@ -21,7 +21,7 @@ def generate_offer_letter(position, name, email, phone, location, salary_monthly
 
 Thank you for meeting us to pursue an employment opportunity with Optiblack 
 Based on the information /documents provided by you and the interview you had in 
-connection with your employment in our Company, we are pleased to appoint you as an “{Position}” based at {location}. 
+connection with your employment in our Company, we are pleased to appoint you as an “{position}” based at {location}. 
 The remuneration will be as discussed and mutually agreed between us. 
 The Management reserves the right to bifurcate or merge the allowances in the basic salary. 
 This letter does not constitute an employment offer. This letter is being issued to intimate 
